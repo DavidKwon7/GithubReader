@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_searchFragment"
+        android:title="search"
+        android:icon="@drawable/search_24"/>
+
+    <item
+        android:id="@+id/item_favoriteFragment"
+        android:title="favorite"
+        android:icon="@drawable/star_rate_24"/>
+
+    <item
+        android:id="@+id/item_settingFragment"
+        android:title="setting"
+        android:icon="@drawable/settings_24"/>
+
+</menu>
