@@ -13,6 +13,10 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "GithubReader"
-include ':app'
+include ':presentation'
 include ':data'
 include ':domain'
+include ':remote'
+include ':local'
+include ':app'
+include ':common'
