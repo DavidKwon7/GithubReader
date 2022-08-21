@@ -1,4 +1,4 @@
-package com.example.app.di
+package com.example.githubreader.di
 
 import com.example.data.repository.RemoteDataSource
 import com.example.data.repository.RepositoryImpl

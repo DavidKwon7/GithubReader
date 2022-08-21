@@ -1,4 +1,4 @@
-package com.example.app.di
+package com.example.githubreader.di
 
 import android.app.Application
 import com.example.remote.api.GithubApiService

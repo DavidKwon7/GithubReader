@@ -6,11 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.common.Mapper
 import com.example.domain.entity.UserEntityModel
-import com.example.domain.qualifiers.IoDispatcher
 import com.example.domain.usecase.GetGithubReposUseCase
 import com.example.githubreader.model.UserPresentationModel
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject

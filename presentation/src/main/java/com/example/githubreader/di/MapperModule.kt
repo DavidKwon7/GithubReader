@@ -1,4 +1,4 @@
-package com.example.app.di
+package com.example.githubreader.di
 
 import com.example.common.Mapper
 import com.example.data.mapper.UserDataDomainMapper
@@ -18,7 +18,7 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)   // SingletonComponent 대신 ViewModelComponent 적용해봄
+@InstallIn(SingletonComponent::class)
 abstract class MapperModule {
 
     @Binds
