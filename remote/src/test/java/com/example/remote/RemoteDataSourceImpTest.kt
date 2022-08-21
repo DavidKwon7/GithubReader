@@ -12,12 +12,10 @@ import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.ObsoleteCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
 import org.mockito.ArgumentMatchers
-import org.mockito.ArgumentMatchers.any
 
 @ExperimentalCoroutinesApi
 @ObsoleteCoroutinesApi
@@ -55,10 +53,13 @@ class RemoteDataSourceImpTest {
     @Test(expected = Exception::class)
     fun test_get_remote_fail() = runTest {
 
-        coEvery { apiService.getRepos(ArgumentMatchers.any()) }
+        // Given
+        coEvery { apiService.getRepos(ArgumentMatchers.any()) } throws Exception()
 
+        // When
         remoteDataSource.getRepos("example")
 
+        // Then
         coVerify { apiService.getRepos(ArgumentMatchers.any()) }
     }
 
