@@ -19,7 +19,7 @@ import org.mockito.ArgumentMatchers
 
 @ExperimentalCoroutinesApi
 @ObsoleteCoroutinesApi
-class RemoteDataSourceImpTest {
+class RemoteDataSourceImplTest {
 
     @MockK
     private lateinit var apiService: GithubApiService
