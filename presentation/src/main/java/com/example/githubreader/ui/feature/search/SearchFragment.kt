@@ -41,6 +41,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
                     it,
                     itemClickListener = {
                         val intent = Intent(getActivity(), DetailActivity::class.java)
+                        intent.putExtra("name", it.name)
+                        intent.putExtra("url", it.url)
                         startActivity(intent)
                     }
                 )
