@@ -43,6 +43,17 @@ class LocalDataSourceImpTest {
         val result = localDataSource.getAllData()
         coVerify { favoriteDAO.getAllData() }
 
-        Truth.assertThat(userData).isEqualTo(result)
+        val expected = userLocalDataMapper.fromList(userData)
+        Truth.assertThat(result).containsExactlyElementsIn(expected)
+    }
+
+    @Test(expected = Exception::class)
+    fun test_get_local_fail() = runTest {
+
+        coEvery { favoriteDAO.getAllData() } throws Exception()
+
+        localDataSource.getAllData()
+
+        coVerify { favoriteDAO.getAllData() }
     }
 }
