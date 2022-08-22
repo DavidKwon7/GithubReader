@@ -2,10 +2,10 @@ package com.example.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.local.model.FavoriteModel
+import com.example.local.model.UserLocalModel
 
 @Database(
-    entities = [FavoriteModel::class],
+    entities = [UserLocalModel::class],
     version = 1,
     exportSchema = false
 )

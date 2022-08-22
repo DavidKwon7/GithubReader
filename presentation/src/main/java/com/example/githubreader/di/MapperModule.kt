@@ -6,6 +6,8 @@ import com.example.data.model.UserDataModel
 import com.example.domain.entity.UserEntityModel
 import com.example.githubreader.mapper.UserDomainPresentationMapper
 import com.example.githubreader.model.UserPresentationModel
+import com.example.local.mapper.UserLocalDataMapper
+import com.example.local.model.UserLocalModel
 import com.example.remote.mapper.UserRemoteDataMapper
 import com.example.remote.model.UserRemoteModel
 import dagger.Binds
@@ -29,4 +31,7 @@ abstract class MapperModule {
 
     @Binds
     abstract fun bindsUserDomainPresentationMapper(mapper: UserDomainPresentationMapper): Mapper<UserEntityModel, UserPresentationModel>
+
+    @Binds
+    abstract fun bindsUserLocalDataMapper(mapper: UserLocalDataMapper): Mapper<UserLocalModel, UserDataModel>
 }

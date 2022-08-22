@@ -1,21 +1,19 @@
 package com.example.local.database
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
-import com.example.local.model.FavoriteModel
+import androidx.room.*
+import com.example.local.model.UserLocalModel
 
+@Dao
 interface FavoriteDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(favoriteModel: FavoriteModel)
+    fun insert(favoriteModel: UserLocalModel)
 
     @Query("SELECT * FROM favoriteModel")
-    fun getAllData(): List<FavoriteModel>
+    fun getAllData(): List<UserLocalModel>
 
     @Delete
-    suspend fun deleteFav(favoriteModel: FavoriteModel)
+    suspend fun deleteFav(favoriteModel: UserLocalModel)
 
     @Query("DELETE FROM favoriteModel")
     suspend fun deleteAll()

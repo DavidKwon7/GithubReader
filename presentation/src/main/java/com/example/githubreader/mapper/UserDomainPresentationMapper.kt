@@ -9,6 +9,7 @@ class UserDomainPresentationMapper @Inject constructor(): Mapper<UserEntityModel
 
     override fun from(i: UserEntityModel?): UserPresentationModel {
         return UserPresentationModel(
+            id = i?.id,
             name = i?.name,
             url = i?.url
         )
@@ -16,6 +17,7 @@ class UserDomainPresentationMapper @Inject constructor(): Mapper<UserEntityModel
 
     override fun to(o: UserPresentationModel?): UserEntityModel {
         return UserEntityModel(
+            id = o?.id,
             name = o?.name,
             url = o?.url
         )

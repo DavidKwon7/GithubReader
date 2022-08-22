@@ -1,12 +1,12 @@
-package com.example.remote.mapper
+package com.example.local.mapper
 
 import com.example.common.Mapper
 import com.example.data.model.UserDataModel
-import com.example.remote.model.UserRemoteModel
+import com.example.local.model.UserLocalModel
 import javax.inject.Inject
 
-class UserRemoteDataMapper @Inject constructor(): Mapper<UserRemoteModel, UserDataModel> {
-    override fun from(i: UserRemoteModel?): UserDataModel {
+class UserLocalDataMapper @Inject constructor() : Mapper<UserLocalModel, UserDataModel> {
+    override fun from(i: UserLocalModel?): UserDataModel {
         return UserDataModel(
             id = i?.id,
             name = i?.name,
@@ -14,11 +14,12 @@ class UserRemoteDataMapper @Inject constructor(): Mapper<UserRemoteModel, UserDa
         )
     }
 
-    override fun to(o: UserDataModel?): UserRemoteModel {
-        return UserRemoteModel(
+    override fun to(o: UserDataModel?): UserLocalModel {
+        return UserLocalModel(
             id = o?.id,
             name = o?.name,
             url = o?.url
+
         )
     }
 }
