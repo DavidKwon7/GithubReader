@@ -20,6 +20,7 @@ class RepositoryImpl @Inject constructor(
         return userMapper.fromList(data)
     }
 
+
     // local
     override suspend fun insert(favoriteModel: UserEntityModel) {
         val userLocalModel = userMapper.to(favoriteModel)

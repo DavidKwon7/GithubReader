@@ -1,5 +1,6 @@
 package com.example.githubreader.ui.feature.search
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.fragment.app.viewModels
 import com.example.common.base.BaseFragment
 import com.example.githubreader.R
 import com.example.githubreader.databinding.FragmentSearchBinding
+import com.example.githubreader.ui.feature.detail.DetailActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -34,7 +36,14 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
 
         // context : fragment에서 this -> viewLifecycleOwner
         viewModel.githubUserLiveData.observe(viewLifecycleOwner){
-            (binding.recyclerView.adapter as SearchAdapter).setItems(it)
+            (binding.recyclerView.adapter as SearchAdapter)
+                .setItems(
+                    it,
+                    itemClickListener = {
+                        val intent = Intent(getActivity(), DetailActivity::class.java)
+                        startActivity(intent)
+                    }
+                )
         }
     }
 }
