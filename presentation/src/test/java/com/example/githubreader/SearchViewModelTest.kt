@@ -1,37 +1,45 @@
 package com.example.githubreader
 
 import android.arch.core.executor.testing.InstantTaskExecutorRule
-import android.media.metrics.Event
-import android.util.EventLog
-import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
+import androidx.lifecycle.viewModelScope
 import com.example.domain.usecase.GetGithubReposUseCase
 import com.example.githubreader.mapper.UserDomainPresentationMapper
+import com.example.githubreader.model.UserPresentationModel
 import com.example.githubreader.ui.feature.search.SearchViewModel
+import com.example.githubreader.utils.CoroutineTestRule
 import com.example.githubreader.utils.TestDataGenerator
 import com.google.common.truth.Truth
-import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ViewModelScoped
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.impl.annotations.MockK
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.ObsoleteCoroutinesApi
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.TimeoutException
 
 
 @ExperimentalCoroutinesApi
 @ObsoleteCoroutinesApi
-internal class SearchViewModelTest{
+internal class SearchViewModelTest : CoroutineTestRule() {
 
     @get:Rule
     var instanceTaskExcutorRule = InstantTaskExecutorRule()
+
+    @get:Rule
+    val testCoroutineRule = CoroutineTestRule()
 
     private val dispatcher = StandardTestDispatcher()
 
@@ -42,6 +50,8 @@ internal class SearchViewModelTest{
 
     private lateinit var searchViewModel: SearchViewModel
 
+
+
     @Before
     fun setUp() {
         MockKAnnotations.init(this, relaxUnitFun = true)
@@ -49,6 +59,30 @@ internal class SearchViewModelTest{
             getGithubReposUseCase = getGithubReposUseCase,
             userMapper = userMapper
         )
+    }
+
+
+
+    @Test
+    fun case2(): Unit = runTest(UnconfinedTestDispatcher()) {
+        val userData = TestDataGenerator.generateUser()
+        coEvery { getGithubReposUseCase.invoke(any()) } returns userData
+
+        // val expected = searchViewModel.githubUserLiveData.value
+        val expected =  searchViewModel.getRepos("d")
+
+        Truth.assertThat(userData).isEqualTo(expected)
+
+        coVerify { searchViewModel.getRepos("") }
+    }
+
+    /*@Test
+    fun aa123() = runTest {
+        val userData = TestDataGenerator.generateUser()
+        coEvery { getGithubReposUseCase.invoke(any()) } returns userData
+        searchViewModel.githubUserLiveData.observeForever(githubUserObserver)
+        searchViewModel.getRepos("a").
+
     }
 
     @Test
@@ -90,5 +124,5 @@ internal class SearchViewModelTest{
         }
         coVerify { getGithubReposUseCase.invoke(any()) }
     }
-
+*/
 }
