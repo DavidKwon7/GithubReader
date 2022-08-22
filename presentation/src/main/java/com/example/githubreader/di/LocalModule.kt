@@ -19,6 +19,7 @@ object LocalModule {
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
         return Room
             .databaseBuilder(context, AppDatabase::class.java, "database")
+            .fallbackToDestructiveMigration()
             .build()
     }
 

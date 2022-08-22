@@ -7,10 +7,10 @@ import com.example.local.model.UserLocalModel
 interface FavoriteDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(favoriteModel: UserLocalModel)
+    suspend fun insert(favoriteModel: UserLocalModel)
 
     @Query("SELECT * FROM favoriteModel")
-    fun getAllData(): List<UserLocalModel>
+    suspend fun getAllData(): List<UserLocalModel>
 
     @Delete
     suspend fun deleteFav(favoriteModel: UserLocalModel)

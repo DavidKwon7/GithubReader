@@ -6,7 +6,7 @@ import com.example.local.model.UserLocalModel
 
 @Database(
     entities = [UserLocalModel::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
