@@ -48,14 +48,11 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
         }
     }
 
-    private fun alertDialog(
-        //afterAction: () -> Unit
-    ) {
+    private fun alertDialog() {
         AlertDialog.Builder(requireContext())
             .setTitle("삭제")
             .setMessage("삭제하시겠습니까?")
             .setPositiveButton("네") { dialog, _ ->
-                // afterAction()
                 dialog.dismiss()
                 toastMessage("삭제되었습니다")
             }
