@@ -9,6 +9,8 @@ import com.example.githubreader.R
 import com.example.githubreader.databinding.ActivityDetailBinding
 import com.example.githubreader.model.UserPresentationModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
@@ -29,8 +31,6 @@ class DetailActivity : AppCompatActivity() {
     fun observe() {
         viewModel.favoriteLiveData.observe(this) {
             binding.tvId.text = it.id.toString()
-            binding.tvName.text = it.name
-            binding.tvUrl.text = it.url
         }
     }
 

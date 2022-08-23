@@ -24,9 +24,9 @@ class DetailViewModel @Inject constructor(
     val favoriteLiveData: LiveData<UserPresentationModel> get() = _favoriteLiveData
 
     fun insertLocalDB(userEntityModel: UserEntityModel) = viewModelScope.launch(Dispatchers.IO) {
-        val localData = userMapper.from(userEntityModel)
-        insertUseCase.invoke(userEntityModel).let {
-            _favoriteLiveData.postValue(localData)
+            val localData = userMapper.from(userEntityModel)
+            insertUseCase.invoke(userEntityModel).let {
+                _favoriteLiveData.postValue(localData)
         }
     }
 }

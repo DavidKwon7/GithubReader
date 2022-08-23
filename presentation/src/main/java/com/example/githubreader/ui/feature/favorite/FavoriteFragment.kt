@@ -8,11 +8,12 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import com.example.common.base.BaseFragment
+import com.example.domain.entity.UserEntityModel
 import com.example.githubreader.databinding.FragmentFavoriteBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
+class FavoriteFragment() : BaseFragment<FragmentFavoriteBinding>() {
 
     val viewModel: FavoriteViewModel by viewModels()
 
@@ -30,6 +31,14 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
         viewModel.getAllLocalData()
 
         observeLiveData()
+        swipeRefresh()
+    }
+
+    private fun swipeRefresh() {
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.getAllLocalData()
+                binding.swipeRefresh.isRefreshing = false
+        }
     }
 
     private fun observeLiveData() {
@@ -50,6 +59,7 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
             .setMessage("삭제하시겠습니까?")
             .setPositiveButton("네") { dialog, _ ->
                 dialog.dismiss()
+                deleteFavorite()
                 toastMessage("삭제되었습니다")
             }
             .setNegativeButton("아니요") { dialog, _ ->
@@ -57,6 +67,10 @@ class FavoriteFragment : BaseFragment<FragmentFavoriteBinding>() {
             }
             .create()
             .show()
+    }
+
+    private fun deleteFavorite() {
+        // todo 작성
     }
 
     private fun toastMessage(message: String) {

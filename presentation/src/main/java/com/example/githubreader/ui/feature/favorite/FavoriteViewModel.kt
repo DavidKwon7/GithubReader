@@ -6,6 +6,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.common.Mapper
 import com.example.common.base.BaseViewModel
 import com.example.domain.entity.UserEntityModel
+import com.example.domain.usecase.DeleteAllUseCase
+import com.example.domain.usecase.DeleteFavUseCase
 import com.example.domain.usecase.GetAllLocalDataUseCase
 import com.example.githubreader.model.UserPresentationModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,6 +18,7 @@ import javax.inject.Inject
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(
     private val getAllLocalDataUseCase: GetAllLocalDataUseCase,
+    private val deleteAllUseCase: DeleteAllUseCase,
     private val userMapper: Mapper<UserEntityModel, UserPresentationModel>
 ) : BaseViewModel() {
 
