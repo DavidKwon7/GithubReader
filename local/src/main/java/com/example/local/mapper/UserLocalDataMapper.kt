@@ -8,6 +8,7 @@ import javax.inject.Inject
 class UserLocalDataMapper @Inject constructor() : Mapper<UserLocalModel, UserDataModel> {
     override fun from(i: UserLocalModel?): UserDataModel {
         return UserDataModel(
+            uid = i?.uid,
             id = i?.id,
             name = i?.name,
             url = i?.url
@@ -16,6 +17,7 @@ class UserLocalDataMapper @Inject constructor() : Mapper<UserLocalModel, UserDat
 
     override fun to(o: UserDataModel?): UserLocalModel {
         return UserLocalModel(
+            uid = o?.uid,
             id = o?.id,
             name = o?.name,
             url = o?.url

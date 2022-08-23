@@ -43,6 +43,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun insertDB() {
         val userEntityModel = UserEntityModel(
+            uid = null,
             id = binding.tvId.id,
             name = binding.tvName.text.toString(),
             url = binding.tvUrl.text.toString()

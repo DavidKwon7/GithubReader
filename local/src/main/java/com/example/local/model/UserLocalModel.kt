@@ -8,7 +8,8 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "favoriteModel")
 @Parcelize
 data class UserLocalModel(
-    @PrimaryKey val id: Int?,
+    @PrimaryKey val uid: Int?,
+    val id: Int?,
     val name: String?,
     val url: String?
 ) : Parcelable
