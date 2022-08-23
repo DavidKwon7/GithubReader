@@ -1,6 +1,7 @@
 package com.example.data
 
 import com.example.data.mapper.UserDataDomainMapper
+import com.example.data.repository.LocalDataSource
 import com.example.data.repository.RemoteDataSource
 import com.example.data.repository.RepositoryImpl
 import com.example.data.utils.TestDataGenerator
@@ -24,6 +25,9 @@ class RepositoryImpTest {
     @MockK
     private lateinit var remoteDataSource: RemoteDataSource
 
+    @MockK
+    private lateinit var localDataSource: LocalDataSource
+
     private val userMapper = UserDataDomainMapper()
 
     private lateinit var repository: Repository
@@ -33,6 +37,7 @@ class RepositoryImpTest {
         MockKAnnotations.init(this, relaxUnitFun = true)
         repository = RepositoryImpl(
             remoteDataSource = remoteDataSource,
+            localDataSource = localDataSource,
             userMapper = userMapper
         )
     }
