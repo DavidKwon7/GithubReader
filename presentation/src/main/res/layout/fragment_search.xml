@@ -12,7 +12,7 @@
 
         <EditText
             android:id="@+id/owner_edit_text"
-            android:hint="검색어를 입력해주세여"
+            android:hint="@string/needSeaching"
             android:maxLines="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
             android:id="@+id/submit_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="submit"
+            android:text="@string/submit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
