@@ -36,7 +36,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun clickFavorite() = with(binding) {
         ivFavorite.setOnClickListener {
-            Toast.makeText(this@DetailActivity, "즐겨찾기에 등록합니다", Toast.LENGTH_SHORT).show()
+            toastMessage(getString(R.string.insertLocal))
             insertDB()
         }
     }
@@ -57,5 +57,9 @@ class DetailActivity : AppCompatActivity() {
 
         tvName.text = name
         tvUrl.text = url
+    }
+
+    private fun toastMessage(message: String) {
+        Toast.makeText(this@DetailActivity, message, Toast.LENGTH_SHORT).show()
     }
 }

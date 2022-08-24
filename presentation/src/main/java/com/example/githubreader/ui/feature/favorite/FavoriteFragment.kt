@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.viewModels
 import com.example.common.base.BaseFragment
 import com.example.domain.entity.UserEntityModel
+import com.example.githubreader.R
 import com.example.githubreader.databinding.FragmentFavoriteBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -60,7 +61,7 @@ class FavoriteFragment() : BaseFragment<FragmentFavoriteBinding>() {
             .setPositiveButton("네") { dialog, _ ->
                 dialog.dismiss()
                 deleteFavorite()
-                toastMessage("삭제되었습니다")
+                toastMessage(getString(R.string.insertLocal))
             }
             .setNegativeButton("아니요") { dialog, _ ->
                 dialog.dismiss()

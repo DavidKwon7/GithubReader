@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         makeCurrentFragment(searchFragment)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        bottomNavigationView.setOnNavigationItemSelectedListener {
+        bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.item_searchFragment -> makeCurrentFragment(searchFragment)
                 R.id.item_favoriteFragment -> makeCurrentFragment(favoriteFragment)

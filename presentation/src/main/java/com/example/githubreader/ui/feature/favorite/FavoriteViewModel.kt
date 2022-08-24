@@ -27,7 +27,6 @@ class FavoriteViewModel @Inject constructor(
 
     fun getAllLocalData() = viewModelScope.launch(Dispatchers.IO) {
         getAllLocalDataUseCase.invoke().let { data ->
-            // _favoriteLiveData.value = userMapper.fromList(data)
             _favoriteLiveData.postValue(userMapper.fromList(data))
         }
     }

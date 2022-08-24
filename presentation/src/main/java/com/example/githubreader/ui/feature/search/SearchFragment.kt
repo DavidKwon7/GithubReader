@@ -34,7 +34,6 @@ class SearchFragment : BaseFragment<FragmentSearchBinding>() {
             viewModel.getRepos(owner)
         }
 
-        // context : fragment에서 this -> viewLifecycleOwner
         viewModel.githubUserLiveData.observe(viewLifecycleOwner){
             (binding.recyclerView.adapter as SearchAdapter)
                 .setItems(
