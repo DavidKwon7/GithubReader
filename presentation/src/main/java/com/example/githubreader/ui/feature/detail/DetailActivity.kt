@@ -28,9 +28,11 @@ class DetailActivity : AppCompatActivity() {
         observe()
     }
 
-    fun observe() {
+    private fun observe() {
         viewModel.favoriteLiveData.observe(this) {
             binding.tvId.text = it.id.toString()
+            binding.tvName.text = it.name.toString()
+            binding.tvUrl.text = it.url.toString()
         }
     }
 
